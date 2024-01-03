@@ -1,0 +1,119 @@
+<UserControl
+	x:Class="Logi.Checkbox" xmlns:local="clr-namespace:Logi" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008">
+	<Grid
+		Background="#00FFFFFF"
+		Margin="48,24,0,-24"
+		MaxWidth="456"
+		Width="Auto">
+		<Ellipse
+			Width="40"
+			Height="40"
+			Margin="-12,-12,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			IsEnabled="{Binding IsMouseOver, ElementName=Trigger, Mode=OneWay}">
+			<FrameworkElement.Resources>
+				<ResourceDictionary>
+					<SolidColorBrush
+						Color="#19ffffff"
+						x:Key="BrushCheckboxUnchecked" />
+					<SolidColorBrush
+						Color="#1900a8e0"
+						x:Key="BrushCheckboxChecked" />
+					<Style
+						TargetType="{x:Type Ellipse}"
+						x:Key="{x:Type Ellipse}">
+						<Setter
+							Property="Fill"
+							Value="{StaticResource BrushCheckboxChecked}" />
+						<Style.Triggers>
+							<Trigger
+								Property="IsEnabled"
+								Value="True">
+								<TriggerBase.EnterActions>
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation
+												Storyboard.TargetProperty="Opacity"
+												From="0.0"
+												To="1.0"
+												Duration="0:0:0.1" />
+										</Storyboard>
+									</BeginStoryboard>
+								</TriggerBase.EnterActions>
+								<TriggerBase.ExitActions>
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation
+												Storyboard.TargetProperty="Opacity"
+												From="1.0"
+												To="0.0"
+												Duration="0:0:0.1" />
+										</Storyboard>
+									</BeginStoryboard>
+								</TriggerBase.ExitActions>
+							</Trigger>
+							<DataTrigger
+								Value="false"
+								Binding="{Binding Path=Checked, RelativeSource={RelativeSource FindAncestor, AncestorType=local:Checkbox}}">
+								<Setter
+									Property="Fill"
+									Value="{StaticResource BrushCheckboxUnchecked}" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</ResourceDictionary>
+			</FrameworkElement.Resources>
+		</Ellipse>
+		<Image
+			Width="16"
+			Height="16"
+			Source="pack://application:,,,/Resources/icons/checkbox.png"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top" />
+		<Image
+			Width="16"
+			Height="16"
+			Source="pack://application:,,,/Resources/icons/checkbox_enabled.png"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top">
+			<FrameworkElement.Resources>
+				<ResourceDictionary>
+					<Style
+						TargetType="{x:Type Image}"
+						x:Key="{x:Type Image}">
+						<Style.Triggers>
+							<DataTrigger
+								Value="false"
+								Binding="{Binding Path=Checked, RelativeSource={RelativeSource FindAncestor, AncestorType=local:Checkbox}}">
+								<Setter
+									Property="Visibility"
+									Value="Hidden" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</ResourceDictionary>
+			</FrameworkElement.Resources>
+		</Image>
+		<TextBlock
+			MaxWidth="376"
+			MaxHeight="40"
+			HorizontalAlignment="Left"
+			Margin="29,1,0,0"
+			Foreground="#FFFFFFFF"
+			FontSize="14"
+			FontWeight="Light"
+			TextWrapping="Wrap"
+			Text="{Binding Path=Text, RelativeSource={RelativeSource FindAncestor, AncestorType=local:Checkbox}}"
+			PreviewMouseDown="OnClick" />
+		<Button
+			Name="Trigger"
+			Opacity="0.0"
+			Width="40"
+			Height="40"
+			Margin="-12,-12,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Click="OnClick" />
+	</Grid>
+</UserControl>

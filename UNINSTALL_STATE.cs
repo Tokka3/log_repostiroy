@@ -1,0 +1,23 @@
+﻿using System;
+
+namespace Logi
+{
+	// Token: 0x0200001A RID: 26
+	public enum UNINSTALL_STATE
+	{
+		// Token: 0x0400012E RID: 302
+		SUCCESS = 1,
+		// Token: 0x0400012F RID: 303
+		ERROR,
+		// Token: 0x04000130 RID: 304
+		INITIALIZING,
+		// Token: 0x04000131 RID: 305
+		UNINSTALLING,
+		// Token: 0x04000132 RID: 306
+		REMOVING_FILES,
+		// Token: 0x04000133 RID: 307
+		REMOVING_EXTRA_FILES,
+		// Token: 0x04000134 RID: 308
+		FINALIZING
+	}
+}

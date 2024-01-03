@@ -1,0 +1,141 @@
+<UserControl
+	x:Class="Logi.RadioButton" xmlns:local="clr-namespace:Logi" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008">
+	<Grid
+		Background="#00FFFFFF"
+		Margin="48,24,0,-24"
+		MaxWidth="456"
+		Width="Auto">
+		<Ellipse
+			Width="40"
+			Height="40"
+			Margin="-10,-10,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			IsEnabled="{Binding IsMouseOver, ElementName=Trigger, Mode=OneWay}">
+			<FrameworkElement.Resources>
+				<ResourceDictionary>
+					<SolidColorBrush
+						Color="#19ffffff"
+						x:Key="BrushCheckboxUnchecked" />
+					<Style
+						TargetType="{x:Type Ellipse}"
+						x:Key="{x:Type Ellipse}">
+						<Setter
+							Property="Fill"
+							Value="{StaticResource BrushCheckboxUnchecked}" />
+						<Style.Triggers>
+							<Trigger
+								Property="IsEnabled"
+								Value="True">
+								<TriggerBase.EnterActions>
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation
+												Storyboard.TargetProperty="Opacity"
+												From="0.0"
+												To="1.0"
+												Duration="0:0:0.1" />
+										</Storyboard>
+									</BeginStoryboard>
+								</TriggerBase.EnterActions>
+								<TriggerBase.ExitActions>
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation
+												Storyboard.TargetProperty="Opacity"
+												From="1.0"
+												To="0.0"
+												Duration="0:0:0.1" />
+										</Storyboard>
+									</BeginStoryboard>
+								</TriggerBase.ExitActions>
+							</Trigger>
+							<DataTrigger
+								Value="false"
+								Binding="{Binding Path=Active, RelativeSource={RelativeSource FindAncestor, AncestorType=local:RadioButton}}">
+								<Setter
+									Property="Fill"
+									Value="{StaticResource BrushCheckboxUnchecked}" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</ResourceDictionary>
+			</FrameworkElement.Resources>
+		</Ellipse>
+		<Image
+			Width="20"
+			Height="20"
+			Source="pack://application:,,,/Resources/icons/radio_inactive.png"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top" />
+		<Image
+			Width="20"
+			Height="20"
+			Source="pack://application:,,,/Resources/icons/radio_active.png"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top">
+			<FrameworkElement.Resources>
+				<ResourceDictionary>
+					<Style
+						TargetType="{x:Type Image}"
+						x:Key="{x:Type Image}">
+						<Style.Triggers>
+							<DataTrigger
+								Value="false"
+								Binding="{Binding Path=Active, RelativeSource={RelativeSource FindAncestor, AncestorType=local:RadioButton}}">
+								<Setter
+									Property="Visibility"
+									Value="Hidden" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</ResourceDictionary>
+			</FrameworkElement.Resources>
+		</Image>
+		<TextBlock
+			MaxWidth="376"
+			MaxHeight="40"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Margin="29,2,0,0"
+			FontSize="12"
+			FontWeight="Normal"
+			TextWrapping="Wrap"
+			Text="{Binding Path=Text, RelativeSource={RelativeSource FindAncestor, AncestorType=local:RadioButton}}"
+			PreviewMouseDown="OnClick">
+			<FrameworkElement.Resources>
+				<ResourceDictionary>
+					<Style
+						TargetType="{x:Type TextBlock}"
+						x:Key="{x:Type TextBlock}">
+						<Style.Triggers>
+							<DataTrigger
+								Value="false"
+								Binding="{Binding Path=Active, RelativeSource={RelativeSource FindAncestor, AncestorType=local:RadioButton}}">
+								<Setter
+									Property="Foreground"
+									Value="{StaticResource BrushTextGrey}" />
+							</DataTrigger>
+							<DataTrigger
+								Value="true"
+								Binding="{Binding Path=Active, RelativeSource={RelativeSource FindAncestor, AncestorType=local:RadioButton}}">
+								<Setter
+									Property="Foreground"
+									Value="#FFFFFFFF" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</ResourceDictionary>
+			</FrameworkElement.Resources>
+		</TextBlock>
+		<Button
+			Name="Trigger"
+			Opacity="0.0"
+			Width="40"
+			Height="40"
+			Margin="-10,-10,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Click="OnClick" />
+	</Grid>
+</UserControl>

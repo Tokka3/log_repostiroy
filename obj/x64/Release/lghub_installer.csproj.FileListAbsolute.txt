@@ -1,0 +1,14 @@
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\lghub_installer.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\resources\style\default.baml
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\App.g.cs
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\components\checkbox.g.cs
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\components\cyclinggradient.g.cs
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\components\diskspaceindicator.g.cs
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\components\modaldialog.g.cs
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\components\radiobutton.g.cs
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\components\spinner.g.cs
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\components\uninstalldialog.g.cs
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\MainWindow.g.cs
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\lghub_installer_MarkupCompile.cache
+C:\Users\admin\Desktop\LogitechProj\lghub_installer\obj\x64\Release\lghub_installer_MarkupCompile.lref
